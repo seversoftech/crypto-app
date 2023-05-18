@@ -3,8 +3,11 @@ import 'dart:async';
 import 'dart:convert';
 import 'package:http/http.dart' as http;
 
+import 'main.dart';
+
 class HomePage extends StatefulWidget {
-  const HomePage({super.key});
+  List currencies;
+   HomePage(this.currencies, {super.key});
 
   @override
   State<HomePage> createState() => _HomePageState();
@@ -14,13 +17,11 @@ class _HomePageState extends State<HomePage> {
   late final List currencies;
   final List<MaterialColor> _colors = [Colors.blue, Colors.indigo, Colors.red];
 
-  @override
-  Future<void> initState() async {
-    super.initState();
-    currencies = await getCurrencies();
-  }
-
- 
+  // @override
+  // Future<void> initState() async {
+  //   super.initState();
+  //   currencies = await getCurrencies();
+  // }
 
   @override
   Widget build(BuildContext context) {
