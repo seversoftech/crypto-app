@@ -20,11 +20,7 @@ class _HomePageState extends State<HomePage> {
     currencies = await getCurrencies();
   }
 
-  Future<List> getCurrencies() async {
-    String cryptoUrl = "https://api.coinmarketcap.com/v1/ticker/?limit=50";
-    http.Response response = await http.get(cryptoUrl as Uri);
-    return json.decode(response.body);
-  }
+ 
 
   @override
   Widget build(BuildContext context) {
@@ -54,6 +50,7 @@ class _HomePageState extends State<HomePage> {
 
   ListTile _getListItemUI(Map currency, MaterialColor color) {
     return ListTile(
+      isThreeLine: true,
       leading: CircleAvatar(
         backgroundColor: color,
         child: Text(
@@ -86,6 +83,8 @@ class _HomePageState extends State<HomePage> {
           style: const TextStyle(color: Colors.red));
     }
 
-    return RichText(text: TextSpan(children: [priceTextWidget,percentageChangeTextWidget]));
+    return RichText(
+        text:
+            TextSpan(children: [priceTextWidget, percentageChangeTextWidget]));
   }
 }

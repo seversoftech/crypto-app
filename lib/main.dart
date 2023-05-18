@@ -1,15 +1,18 @@
+import 'dart:convert';
 import 'package:flutter/material.dart';
+import 'package:http/http.dart' as http;
+import '../hompage.dart';
 
-import 'hompage.dart';
-
-void main() {
-  runApp(const MyApp());
+void main() async {
+  List currencies = await getCurrencies();
+  print(currencies);
+  runApp(MyApp(currencies));
 }
 
 class MyApp extends StatelessWidget {
-  const MyApp({super.key});
-
-  // This widget is the root of your application.
+  final List _currencies;
+  const MyApp(this._currencies, {super.key});
+ 
   @override
   Widget build(BuildContext context) {
     return MaterialApp(
@@ -22,4 +25,10 @@ class MyApp extends StatelessWidget {
       home: const HomePage(),
     );
   }
+}
+
+Future<List> getCurrencies() async {
+  String cryptoUrl = "https://api.coinmarketcap.com/v1/ticker/?limit=50";
+  http.Response response = await http.get(cryptoUrl as Uri);
+  return json.decode(response.body);
 }
