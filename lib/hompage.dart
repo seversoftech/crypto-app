@@ -51,4 +51,41 @@ class _HomePageState extends State<HomePage> {
       ),
     );
   }
+
+  ListTile _getListItemUI(Map currency, MaterialColor color) {
+    return ListTile(
+      leading: CircleAvatar(
+        backgroundColor: color,
+        child: Text(
+          currency['name'][0],
+        ),
+      ),
+      title: Text(
+        currency['name'],
+        style: const TextStyle(fontWeight: FontWeight.bold),
+      ),
+      subtitle: _getSubtitleText(
+          currency['price_usd'], currency['percentage_change_1h']),
+    );
+  }
+
+  Widget _getSubtitleText(String priceUSD, String percentageChange) {
+    TextSpan priceTextWidget = TextSpan(
+        text: "\$$priceUSD\n", style: const TextStyle(color: Colors.black));
+    String percentageChangeText = "1 hour: $percentageChange%";
+
+    TextSpan percentageChangeTextWidget;
+
+    if (double.parse(percentageChange) > 0) {
+      percentageChangeTextWidget = TextSpan(
+          text: percentageChangeText,
+          style: const TextStyle(color: Colors.green));
+    } else {
+      percentageChangeTextWidget = TextSpan(
+          text: percentageChangeText,
+          style: const TextStyle(color: Colors.red));
+    }
+
+    return RichText(text: TextSpan(children: [priceTextWidget,percentageChangeTextWidget]));
+  }
 }
