@@ -35,4 +35,5 @@ Future<List> getCurrencies() async {
   Uri uri = Uri.parse(cryptoUrl);
   http.Response response = await http.get(Uri.parse(cryptoUrl));
   return json.decode(response.body);
+  
 }
