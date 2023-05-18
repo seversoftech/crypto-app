@@ -1,13 +1,9 @@
 import 'package:flutter/material.dart';
-import 'dart:async';
-import 'dart:convert';
-import 'package:http/http.dart' as http;
 
-import 'main.dart';
 
 class HomePage extends StatefulWidget {
   final List currencies;
-  HomePage(this.currencies, {super.key});
+  const HomePage(this.currencies, {super.key});
 
   @override
   State<HomePage> createState() => _HomePageState();
@@ -28,22 +24,20 @@ class _HomePageState extends State<HomePage> {
   }
 
   Widget _cryptoWidget() {
-    return Container(
-      child: Column(
-        children: [
-          Flexible(
-            child: ListView.builder(
-              itemCount: widget.currencies.length,
-              itemBuilder: (BuildContext context, int index) {
-                final Map currency = widget.currencies[index];
-                final MaterialColor color = _colors[index % _colors.length];
+    return Column(
+      children: [
+        Flexible(
+          child: ListView.builder(
+            itemCount: widget.currencies.length,
+            itemBuilder: (BuildContext context, int index) {
+              final Map currency = widget.currencies[index];
+              final MaterialColor color = _colors[index % _colors.length];
 
-                return _getListItemUI(currency, color);
-              },
-            ),
+              return _getListItemUI(currency, color);
+            },
           ),
-        ],
-      ),
+        ),
+      ],
     );
   }
 
