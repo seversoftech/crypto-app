@@ -12,7 +12,7 @@ void main() async {
 class MyApp extends StatelessWidget {
   final List _currencies;
   const MyApp(this._currencies, {super.key});
- 
+
   @override
   Widget build(BuildContext context) {
     return MaterialApp(
@@ -22,13 +22,14 @@ class MyApp extends StatelessWidget {
         colorScheme: ColorScheme.fromSeed(seedColor: Colors.deepPurple),
         useMaterial3: true,
       ),
-      home:  HomePage(_currencies),
+      home: HomePage(_currencies),
     );
   }
 }
 
 Future<List> getCurrencies() async {
-  String cryptoUrl = "https://api.coinmarketcap.com/v1/ticker/?limit=50";
-  http.Response response = await http.get(cryptoUrl as Uri);
+  String cryptoUrl = 'https://api.coinmarketcap.com/v1/ticker/?limit=50';
+  Uri uri = Uri.parse(cryptoUrl);
+  http.Response response = await http.get(Uri.parse(cryptoUrl));
   return json.decode(response.body);
 }
