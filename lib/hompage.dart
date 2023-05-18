@@ -6,8 +6,8 @@ import 'package:http/http.dart' as http;
 import 'main.dart';
 
 class HomePage extends StatefulWidget {
-  List currencies;
-   HomePage(this.currencies, {super.key});
+  final List currencies;
+  HomePage(this.currencies, {super.key});
 
   @override
   State<HomePage> createState() => _HomePageState();
@@ -16,12 +16,6 @@ class HomePage extends StatefulWidget {
 class _HomePageState extends State<HomePage> {
   late final List currencies;
   final List<MaterialColor> _colors = [Colors.blue, Colors.indigo, Colors.red];
-
-  // @override
-  // Future<void> initState() async {
-  //   super.initState();
-  //   currencies = await getCurrencies();
-  // }
 
   @override
   Widget build(BuildContext context) {
@@ -35,16 +29,20 @@ class _HomePageState extends State<HomePage> {
 
   Widget _cryptoWidget() {
     return Container(
-      child: Flexible(
-        child: ListView.builder(
-          itemCount: currencies.length,
-          itemBuilder: (BuildContext context, int index) {
-            final Map currency = currencies[index];
-            final MaterialColor color = _colors[index % _colors.length];
+      child: Column(
+        children: [
+          Flexible(
+            child: ListView.builder(
+              itemCount: widget.currencies.length,
+              itemBuilder: (BuildContext context, int index) {
+                final Map currency = widget.currencies[index];
+                final MaterialColor color = _colors[index % _colors.length];
 
-            return _getListItemUI(currency, color);
-          },
-        ),
+                return _getListItemUI(currency, color);
+              },
+            ),
+          ),
+        ],
       ),
     );
   }
