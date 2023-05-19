@@ -30,10 +30,12 @@ class MyApp extends StatelessWidget {
   }
 }
 
+
+
 Future<List> getCurrencies() async {
   String cryptoUrl = 'https://api.coinmarketcap.com/v1/ticker/?limit=50';
   Uri uri = Uri.parse(cryptoUrl);
   http.Response response = await http.get(Uri.parse(cryptoUrl));
   return json.decode(response.body);
-  
+
 }
