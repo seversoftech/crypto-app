@@ -31,7 +31,7 @@ class MyApp extends StatelessWidget {
 }
 
 Future<List> getCurrencies() async {
-  String cryptoUrl = 'https://api.coinmarketcap.com/v1/ticker/?limit=50';
+  String cryptoUrl = 'https://sandbox-api.coinmarketcap.com/v1/cryptocurrency/listings/latest';
 
   http.Response response = await http.get(Uri.parse(cryptoUrl));
   return json.decode(response.body);
