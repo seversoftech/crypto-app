@@ -31,8 +31,14 @@ class MyApp extends StatelessWidget {
 }
 
 Future<List> getCurrencies() async {
-  String cryptoUrl = 'https://sandbox-api.coinmarketcap.com/v1/cryptocurrency/listings/latest';
+  String cryptoUrl = 'https://pro-api.coinmarketcap.com/v1/cryptocurrency/listings/latest';
 
-  http.Response response = await http.get(Uri.parse(cryptoUrl));
+    final headers = {
+    'Content-Type': 'application/json', 
+    'X-CMC_PRO_API_KEY': '865471d4-ce1e-4987-8c66-ea721f324119', 
+  };
+
+
+  http.Response response = await http.get(Uri.parse(cryptoUrl), headers: headers);
   return json.decode(response.body);
 }
