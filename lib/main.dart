@@ -35,7 +35,7 @@ Future<List> getCurrencies() async {
 
     final headers = {
     'Content-Type': 'application/json', 
-    'X-CMC_PRO_API_KEY': 'YOUR-API-KEY', 
+    'X-CMC_PRO_API_KEY': '865471d4-ce1e-4987-8c66-ea721f324119', 
   };
 
 
