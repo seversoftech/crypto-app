@@ -1,6 +1,5 @@
 import 'package:flutter/material.dart';
 
-
 class HomePage extends StatefulWidget {
   final List currencies;
   const HomePage(this.currencies, {super.key});
@@ -54,8 +53,7 @@ class _HomePageState extends State<HomePage> {
         currency['name'],
         style: const TextStyle(fontWeight: FontWeight.bold),
       ),
-      subtitle: _getSubtitleText(
-          currency['price_usd'], currency['percentage_change_1h']),
+      subtitle: _getSubtitleText(currency['name'], currency['name']),
     );
   }
 
