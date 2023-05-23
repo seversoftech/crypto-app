@@ -37,7 +37,7 @@ Future<List<dynamic>> getCurrencies() async {
 
   final response = await http.get(
       Uri.parse(
-          'https://pro-api.coinmarketcap.com/v1/cryptocurrency/listings/latest'),
+          'https://pro-api.coinmarketcap.com/v1/cryptocurrency/listings/latest?start=1&limit=5000&convert=USD'),
       headers: headers);
 
   if (response.statusCode == 200) {

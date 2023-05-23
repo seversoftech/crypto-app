@@ -59,6 +59,7 @@ class _HomePageState extends State<HomePage> {
   }
 
   Widget _getSubtitleText(String priceUSD, String percentageChange) {
+    
     TextSpan priceTextWidget = TextSpan(
       text: "\$$priceUSD\n",
       style: const TextStyle(color: Colors.black),
