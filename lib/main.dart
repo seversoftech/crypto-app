@@ -1,5 +1,4 @@
 import 'dart:convert';
-import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
 import 'package:http/http.dart' as http;
 import '../hompage.dart';
@@ -44,7 +43,7 @@ Future<List<dynamic>> getCurrencies() async {
   if (response.statusCode == 200) {
     final data = jsonDecode(response.body);
     return data[
-        'data']; // Assuming the API response contains a 'data' field with the required cryptocurrency information.
+        'data']; 
   } else {
     throw Exception('Failed to fetch data');
   }
