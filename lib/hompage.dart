@@ -53,29 +53,34 @@ class _HomePageState extends State<HomePage> {
         currency['name'],
         style: const TextStyle(fontWeight: FontWeight.bold),
       ),
-      subtitle: _getSubtitleText(currency['name'], currency['name']),
+      subtitle: _getSubtitleText(
+          currency['price_usd'], currency['percentage_change_1h']),
     );
   }
 
   Widget _getSubtitleText(String priceUSD, String percentageChange) {
     TextSpan priceTextWidget = TextSpan(
-        text: "\$$priceUSD\n", style: const TextStyle(color: Colors.black));
+      text: "\$$priceUSD\n",
+      style: const TextStyle(color: Colors.black),
+    );
     String percentageChangeText = "1 hour: $percentageChange%";
 
     TextSpan percentageChangeTextWidget;
 
     if (double.parse(percentageChange) > 0) {
       percentageChangeTextWidget = TextSpan(
-          text: percentageChangeText,
-          style: const TextStyle(color: Colors.green));
+        text: percentageChangeText,
+        style: const TextStyle(color: Colors.green),
+      );
     } else {
       percentageChangeTextWidget = TextSpan(
-          text: percentageChangeText,
-          style: const TextStyle(color: Colors.red));
+        text: percentageChangeText,
+        style: const TextStyle(color: Colors.red),
+      );
     }
 
     return RichText(
-        text:
-            TextSpan(children: [priceTextWidget, percentageChangeTextWidget]));
+      text: TextSpan(children: [priceTextWidget, percentageChangeTextWidget]),
+    );
   }
 }
