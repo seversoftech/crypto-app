@@ -1,14 +1,11 @@
 import 'dart:convert';
-import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
 import 'package:http/http.dart' as http;
 import '../hompage.dart';
 
 void main() async {
   List currencies = await getCurrencies();
-  if (kDebugMode) {
-    print(currencies);
-  }
+
   runApp(MyApp(currencies));
 }
 
