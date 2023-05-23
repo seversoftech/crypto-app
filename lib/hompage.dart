@@ -55,13 +55,12 @@ class _HomePageState extends State<HomePage> {
         currency['name'],
         style: const TextStyle(fontWeight: FontWeight.bold),
       ),
-      subtitle:
-          _getSubtitleText(currency['price'], currency['percent_change_1h']),
+      subtitle: _getSubtitleText(currency['quote']['USD']['price'],
+          currency['quote']['USD']['percent_change_1h']),
     );
   }
 
-  Widget _getSubtitleText(String priceUSD, String percentageChange) {
-    
+  Widget _getSubtitleText(double priceUSD, double percentageChange) {
     TextSpan priceTextWidget = TextSpan(
       text: "\$$priceUSD\n",
       style: const TextStyle(color: Colors.black),
@@ -70,7 +69,7 @@ class _HomePageState extends State<HomePage> {
 
     TextSpan percentageChangeTextWidget;
 
-    if (double.parse(percentageChange) > 0) {
+    if (double.parse(percentageChange.toString()) > 0) {
       percentageChangeTextWidget = TextSpan(
         text: percentageChangeText,
         style: const TextStyle(color: Colors.green),
