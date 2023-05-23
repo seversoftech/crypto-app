@@ -6,9 +6,9 @@ import '../hompage.dart';
 
 void main() async {
   List currencies = await getCurrencies();
-  if (kDebugMode) {
-    print(currencies);
-  }
+  // if (kDebugMode) {
+  //   print();
+  // }
   runApp(MyApp(currencies));
 }
 
@@ -49,4 +49,3 @@ Future<List<dynamic>> getCurrencies() async {
     throw Exception('Failed to fetch data');
   }
 }
-

@@ -54,11 +54,11 @@ class _HomePageState extends State<HomePage> {
         style: const TextStyle(fontWeight: FontWeight.bold),
       ),
       subtitle: _getSubtitleText(
-          currency['price_usd'], currency['percentage_change_1h']),
+          currency['num_market_pairs'], currency['num_market_pairs']),
     );
   }
 
-  Widget _getSubtitleText(String priceUSD, String percentageChange) {
+  Widget _getSubtitleText( priceUSD,  percentageChange) {
     TextSpan priceTextWidget = TextSpan(
       text: "\$$priceUSD\n",
       style: const TextStyle(color: Colors.black),
