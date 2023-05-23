@@ -1,5 +1,7 @@
 import 'package:flutter/material.dart';
 
+import 'main.dart';
+
 class HomePage extends StatefulWidget {
   final List currencies;
   const HomePage(this.currencies, {super.key});
@@ -53,13 +55,13 @@ class _HomePageState extends State<HomePage> {
         currency['name'],
         style: const TextStyle(fontWeight: FontWeight.bold),
       ),
-      subtitle: _getSubtitleText(
-          currency['price'], currency['percent_change_1h']),
+      subtitle:
+          _getSubtitleText(currency['price'], currency['percent_change_1h']),
     );
   }
 
   Widget _getSubtitleText(String priceUSD, String percentageChange) {
-    //  var nestedValue = currencies['quote']['USD']['price'];
+    
     TextSpan priceTextWidget = TextSpan(
       text: "\$$priceUSD\n",
       style: const TextStyle(color: Colors.black),
