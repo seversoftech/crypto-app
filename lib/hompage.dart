@@ -1,6 +1,5 @@
 import 'package:flutter/material.dart';
 
-import 'main.dart';
 
 class HomePage extends StatefulWidget {
   final List currencies;
