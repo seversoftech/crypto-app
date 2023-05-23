@@ -30,7 +30,7 @@ class MyApp extends StatelessWidget {
 Future<List<dynamic>> getCurrencies() async {
   final headers = {
     'Content-Type': 'application/json',
-    'X-CMC_PRO_API_KEY': '192f6ffc-306a-495f-8110-ebd51b64b52d',
+    'X-CMC_PRO_API_KEY': 'YOUR-API-KEY',
   };
 
   final response = await http.get(
