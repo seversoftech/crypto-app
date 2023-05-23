@@ -30,16 +30,23 @@ class MyApp extends StatelessWidget {
   }
 }
 
-Future<List> getCurrencies() async {
-  String cryptoUrl =
-      'https://pro-api.coinmarketcap.com/v1/cryptocurrency/listings/latest';
-
+Future<List<dynamic>> getCurrencies() async {
   final headers = {
     'Content-Type': 'application/json',
-    'X-CMC_PRO_API_KEY': 'YOUR-API-KEY',
+    'X-CMC_PRO_API_KEY': '192f6ffc-306a-495f-8110-ebd51b64b52d',
   };
 
-  http.Response response =
-      await http.get(Uri.parse(cryptoUrl), headers: headers);
-  return json.decode(response.body);
+  final response = await http.get(
+      Uri.parse(
+          'https://pro-api.coinmarketcap.com/v1/cryptocurrency/listings/latest'),
+      headers: headers);
+
+  if (response.statusCode == 200) {
+    final data = jsonDecode(response.body);
+    return data[
+        'data']; // Assuming the API response contains a 'data' field with the required cryptocurrency information.
+  } else {
+    throw Exception('Failed to fetch data');
+  }
 }
+
